@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Deret Fibonacci</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Deret Fibonacci</h1>
+
+            <form method="post">
+                <label for="n">Masukkan jumlah bilangan:</label>
+                <input type="number" name="n" id="n" min="1" max="20" value="<?php echo isset($_POST['n']) ? $_POST['n'] : 10; ?>">
+                <button type="submit">Tampilkan</button>
+            </form>
+
+            <?php
+                if (isset($_POST['n'])) {
+                    $n = $_POST['n'];
+
+                    $prev = 0;
+                    $current = 1;
+
+                    echo '<div class="fibonacci">';
+
+                    for ($i = 1; $i <= $n; $i++) {
+                        $temp = $current;
+                        $current += $prev;
+                        $prev = $temp;
+
+                        echo '<div class="number">' . $prev . '</div>';
+                    }
+
+                    echo '</div>';
+                }
+            ?>
+        </div>
+    </body>
+</html>
